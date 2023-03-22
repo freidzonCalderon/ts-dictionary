@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## [Live Demo Click Here](https://simple-dictionary-project.netlify.app/).
+## [Live Demo Click Here](https://ts-dictionary-app.netlify.app/).
 
 This project was build with React JS, Typescript, Tailwind and it is fetching data from the [Dictionary API](https://dictionaryapi.dev/). I used Axios to fetch the data. 
 
