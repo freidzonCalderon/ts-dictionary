@@ -15,28 +15,28 @@ const Wrapper = () => {
 		examples: "",
 	});
 
-	const DictionaryData = async () => {
-		try {
-			const res = await axios.get(
-				`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-			);
-
-			setResultData({
-				...resultData,
-				title: res.data[0].word,
-				partOfSpeech: res.data[0].meanings[0].partOfSpeech,
-				phonetic: res.data[0].phonetic,
-				meaning: res.data[0].meanings[0].definitions[0].definition,
-				examples: res.data[0].meanings[0].definitions[0].example,
-			});
-			setError(false);
-		} catch (error) {
-			console.error(`No word found, error code: ${error}`);
-			setError(true);
-		}
-	};
-
 	useEffect(() => {
+		const DictionaryData = async () => {
+			try {
+				const res = await axios.get(
+					`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+				);
+
+				setResultData((prevState) => ({
+					...prevState,
+					title: res.data[0].word,
+					partOfSpeech: res.data[0].meanings[0].partOfSpeech,
+					phonetic: res.data[0].phonetic,
+					meaning: res.data[0].meanings[0].definitions[0].definition,
+					examples: res.data[0].meanings[0].definitions[0].example,
+				}));
+				setError(false);
+			} catch (error) {
+				console.error(`No word found, error code: ${error}`);
+				setError(true);
+			}
+		};
+
 		if (!word) {
 			return;
 		}
